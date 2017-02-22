@@ -102,23 +102,46 @@ sizes = [tweets['javascript'].value_counts()[True], tweets['html'].value_counts(
 fig1, ax1 = plt.subplots()
 ax1.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90)
 ax1.axis('equal')
-ax1.set_title('Ranking: js vs. hadoop vs. c++', fontsize=10, fontweight='bold')
+ax1.set_title('Tweets Based on Technology', fontsize=10, fontweight='bold')
 plt.savefig('plot.png')
 # plt.show()
 
-# prg_langs = ['javascript', 'hadoop', 'c++']
-# tweets_by_prg_lang = [tweets['javascript'].value_counts()[True], tweets['hadoop'].value_counts()[True], tweets['c++'].value_counts()[True]]
+companies = ['apple', 'google', 'amazon', 'microsoft', 'salesforce', 'oracle', 'sap']
+tweets_by_company = [tweets['apple'].value_counts()[True], tweets['google'].value_counts()[True],
+    tweets['amazon'].value_counts()[True], tweets['microsoft'].value_counts()[True], tweets['salesforce'].value_counts()[True],
+    tweets['oracle'].value_counts()[True], tweets['sap'].value_counts()[True]]
 
-# x_pos = list(range(len(prg_langs)))
-# width = 0.8
-# fig, ax = plt.subplots()
-# plt.bar(x_pos, tweets_by_prg_lang, width, alpha=1, color='g')
+x_pos = list(range(len(companies)))
+width = 0.8
+fig, ax = plt.subplots()
+plt.bar(x_pos, tweets_by_company, width, alpha=1, color='r')
 
-# # Setting axis labels and ticks
-# ax.set_ylabel('Number of tweets', fontsize=15)
-# ax.set_title('Ranking: js vs. hadoop vs. c++', fontsize=10, fontweight='bold')
-# ax.set_xticks([p + 0.4 * width for p in x_pos])
-# ax.set_xticklabels(prg_langs)	
-# plt.savefig('plot.png');
+ax.set_ylabel('Tweet Total', fontsize=15)
+ax.set_title('Trending Companies', fontsize=15, fontweight='bold')
+ax.set_xticks([p for p in x_pos])
+ax.set_xticklabels(companies)	
+plt.savefig('plot2.png');
 # plt.show()
+
+import matplotlib.pyplot as plt
+plt.rcdefaults()
+import numpy as np
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots()
+
+# Example data
+techs = labels4
+y_pos = np.arange(len(techs))
+tweets_by_tech = [tweets['git'].value_counts()[True], tweets['heroku'].value_counts()[True], tweets['aws'].value_counts()[True],
+    tweets['docker'].value_counts()[True], tweets['digitalocean'].value_counts()[True]]
+
+ax.barh(y_pos, tweets_by_tech, align='center',
+        color='green')
+ax.set_yticks(y_pos)
+ax.set_yticklabels(techs)
+ax.invert_yaxis()  # labels read top-to-bottom
+ax.set_xlabel('Number of Tweets')
+ax.set_title('Tweets based on Tech')
+plt.savefig('plot3.png');
 

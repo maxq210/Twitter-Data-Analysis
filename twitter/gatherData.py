@@ -31,5 +31,5 @@ class MyListener(StreamListener):
  
 twitter_stream = Stream(auth, MyListener())
 twitter_stream.filter(track=['#javascript', '#hadoop', '#c++', '#sql', '#ruby', '#spark', '#angular', '#react', '#python'
-	'#node', '#php', '#css', '#html', '#docker', '#aws', '#heroku', '#digitalocean', '#git', '#apple', '#google', '#twitter',
+	'#node', '#php', '#css', '#html', '#docker', '#aws', '#heroku', '#digitalocean', '#git', '#apple', '#google',
 	'#salesforce', '#facebook', '#oracle', '#sap', '#microsoft', '#amazon'])
